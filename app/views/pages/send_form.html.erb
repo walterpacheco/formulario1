@@ -1,9 +1,49 @@
 <h1>Pages#send</h1>
 <p>Find me in app/views/pages/send.html.erb</p>
 
-<form action="<%= pages_receipt_path %>" method='POST'>
+<%
+=begin%>
+ <form action="<%= pages_receipt_path %>" method='POST'>
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token">
     <input type="text" name="seach">
     <input type="submit">
 
-</form>
+</form> 
+<%
+=end%>
+<%
+=begin%>
+ <%= form_tag(pages_receipt_path)  do %>
+    <%= label_tag 'Etiqueta' %>
+    <%= text_field_tag 'campo_de_texto', '', placeholder: 'Campo de texto' %>
+    <%= select_tag "credit_card", options_for_select([ "VISA", "MasterCard", "American Express"]),prompt: 'Seleccione una tarjeta' %>
+    <%= hidden_field_tag 'token', 'VUBJKB23UIVI1UU1VOBVI@' %>
+    <%= submit_tag 'Enviar' %>
+<%end%> 
+<%
+=end%>
+<%
+=begin%>
+ <%= form_with url: 'pages_receipt_path', local: true do |f| %>
+ <%= f.label :search %>
+ <%= f.text_field :search, id: 'mi_id' %>
+ <%= f.submit %>
+<% end %> 
+<%
+=end%>
+
+<%
+=begin%>
+ <%= form_with url: 'pages_receipt_path', local: true,scope:'my_form' do |f| %>
+ <%= f.label 'Tu búsqueda' %>
+ <%= f.text_field :search, id: 'mi_id' %>
+ <%= f.submit %>
+<% end %> 
+<%
+=end%>
+
+<%= form_with model: Search.last , local: true do |f| %>
+ <%= f.label 'Tu búsqueda' %>
+ <%= f.text_field :search, id: 'mi_id' %>
+ <%= f.submit %>
+<% end %>
