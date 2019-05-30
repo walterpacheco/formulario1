@@ -1,0 +1,9 @@
+<h1>Pages#send</h1>
+<p>Find me in app/views/pages/send.html.erb</p>
+
+<form action="<%= pages_receipt_path %>" method='POST'>
+    <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token">
+    <input type="text" name="seach">
+    <input type="submit">
+
+</form>
